@@ -90,6 +90,10 @@ class BaseTestCase(unittest.TestCase):
         # Frog robot
         self.assertNotEqual(self.driver.title, "Submitty - Error", "Got Error Page")
 
+        # PHP Call Stack
+        self.assertEqual(0, len(self.driver.find_elements_by_class_name("xdebug-error")))
+        self.assertEqual(0, len(self.driver.find_elements_by_class_name("xe-notice")))
+
     def log_in(self, url=None, title="Submitty", user_id=None, user_password=None, user_name=None):
         """
         Provides a common function for logging into the site (and ensuring
